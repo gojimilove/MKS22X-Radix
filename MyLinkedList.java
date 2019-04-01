@@ -34,12 +34,17 @@ class Node<E> {
 
 }
 
+
 public class MyLinkedList<E> {
 	private int length;
 	private Node start,end;
 
 	public MyLinkedList() {
 		//empty list
+		length = 0;
+	}
+
+	public void clear() {
 		length = 0;
 	}
 
@@ -130,8 +135,6 @@ public class MyLinkedList<E> {
 		}
 		return i;
 	}
-
-	
 
 	public E remove(int index) {
 		Node n = getNode(index);

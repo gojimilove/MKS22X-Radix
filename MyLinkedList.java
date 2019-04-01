@@ -136,61 +136,18 @@ public class MyLinkedList<E> {
 		return i;
 	}
 
-	public E remove(int index) {
-		Node n = getNode(index);
+	public E removeFront() {
+		if (length <= 0) {
+			throw new IndexOutOfBoundsException("the linked list is empty");
+		}
+		Node n = getNode(0);
 		E x = n.getData();
-		//if index out of bounds throw exception
-		if (index < 0 || index >= length) {
-			throw new IndexOutOfBoundsException("index out of bounds");
-		}
-		//if last element make second to last element end
-		else if (index == length - 1) {
-			end = getNode(index - 1);
-			getNode(index = 1).setNext(null);
-		}
-		//if first element make second element start
-		else if (index == 0) {
-			start = getNode(1);
-			getNode(1).setPrev(null);
-		}
-		//find nodes before and after current, make them point to each other
-		else {
-			Node before = getNode(index - 1);
-			Node after = getNode(index + 1);
-			before.setNext(after);
-			after.setPrev(before);
-		}
-		length--; //size decreases
-		return x; //return value of removed node
+		start = getNode(1);
+		getNode(1).setPrev(null);
+		length--;
+		return x;
 	}
-
-	public boolean remove(E value) {
-		int i = indexOf(value); //index of current node
-		//if index out of bounds throw exception
-		if (i < 0 || i >= length) {
-			throw new IndexOutOfBoundsException("index out of bounds");
-		}
-		//if last element make second to last element end
-		else if (i == length - 1) {
-			end = getNode(i - 1);
-			getNode(i - 1).setNext(null);
-		}
-		//if first element make second element start
-		else if (i == 0) {
-			start = getNode(1);
-			getNode(1).setPrev(null);
-		}
-		//else find nodes before and after, make them point to each other
-		else {
-			Node before = getNode(i - 1);
-			Node after = getNode(i + 1);
-			before.setNext(after);
-			after.setNext(before);
-		}
-		length--; //size decreases
-		return true;
-	}
-
+	
 	public void extend(MyLinkedList<E> other) {
 		this.length = this.size() + other.size();
 		this.end.setNext(other.start);

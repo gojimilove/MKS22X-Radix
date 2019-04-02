@@ -27,7 +27,7 @@ public class Radix {
 	    }
 	    System.out.println("\nLIST: "+list+"\n===========\n\n");
 
-	    int k = 2; //number of digits - 1 (already sorted once)
+	    int k = 3; //number of digits - 1 (already sorted once)
 	    for (int i = 0; i < k; i++) {
 	    	//empty list back into buckets
 	    	for (int j = 0; j < list.size(); j++) {
@@ -41,9 +41,8 @@ public class Radix {
 		    }
 		    System.out.println("\nLIST: "+list+"\n");
 
+	    	//buckets to list
 	    	for (int n = 0; n < buckets.length; n++) {
-		    	// System.out.println(buckets[i]);
-		    	// System.out.println("LIST: "+list);
 		    	if (buckets[n].size() > 0) {
 		    		list.extend(buckets[n]);	
 		    	}
@@ -62,7 +61,7 @@ public class Radix {
 	}
 
 	public static void main(String[]args) {
-	    int[] tester = new int[]{645, 513, 457, 223, 832, 386, 190};
+	    int[] tester = new int[]{645, 13, 457, 223, 32, 386, 190};
 	    radixsort(tester);
 	}
 }

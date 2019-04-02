@@ -12,9 +12,9 @@ public class Radix {
 	    }
 
 	    //print out buckets
-	    // for (int i = 0; i < buckets.length; i++) {
-	    // 	System.out.println(buckets[i]);
-	    // }
+	    for (int i = 0; i < buckets.length; i++) {
+	    	System.out.println(buckets[i]);
+	    }
 
 	    MyLinkedList<Integer> list = new MyLinkedList();
 	    //merge buckets into list
@@ -22,12 +22,12 @@ public class Radix {
 	    	// System.out.println(buckets[i]);
 	    	// System.out.println("LIST: "+list);
 	    	if (buckets[i].size() > 0) {
-	    		list.extend(buckets[i]);
-	    		System.out.println("EXTENDED LIST: "+list);
+	    		list.extend(buckets[i]);	
 	    	}
 	    }
+	    System.out.println("\nLIST: "+list+"\n===========\n\n");
 
-	    int k = 1; //number of digits - 1 (already sorted once)
+	    int k = 2; //number of digits - 1 (already sorted once)
 	    for (int i = 0; i < k; i++) {
 	    	//empty list back into buckets
 	    	for (int j = 0; j < list.size(); j++) {
@@ -35,14 +35,26 @@ public class Radix {
 	    		buckets[x/((int)(Math.pow(10, i+1))) %10 + 10].add(x);
 	    	}
 	    	list.clear(); //fix remove later but for now clear works
-	    }
 
-	    //print out buckets
-	    for (int i = 0; i < buckets.length; i++) {
-	    	System.out.println(buckets[i]);
-	    }
-	    System.out.println(list);
+	    	for (int b = 0; b < buckets.length; b++) {
+		    	System.out.println(buckets[b]);
+		    }
+		    System.out.println("\nLIST: "+list+"\n");
 
+	    	for (int n = 0; n < buckets.length; n++) {
+		    	// System.out.println(buckets[i]);
+		    	// System.out.println("LIST: "+list);
+		    	if (buckets[n].size() > 0) {
+		    		list.extend(buckets[n]);	
+		    	}
+		    }
+
+		    for (int b = 0; b < buckets.length; b++) {
+		    	System.out.println(buckets[b]);
+		    }
+		    System.out.println("\nLIST: "+list+"\n");
+	    }
+    
 	    //starting with tens place (if it exists)
 	      //if number is negative buckets[9-(first digit of num)] gets num added to it
 	      //else buckets[(first digit of num) + 10] gets num added to import junit.framework.TestCase;

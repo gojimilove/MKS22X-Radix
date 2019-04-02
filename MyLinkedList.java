@@ -122,10 +122,18 @@ public class MyLinkedList<E> {
 	}
 
 	public void extend(MyLinkedList<E> other) {
-		this.length = this.size() + other.size();
-		this.end.setNext(other.start);
-		other.start.setPrev(this.end);
-		this.end = other.end;
+		if (other.size() == 0) return;
+		else if (this.size() == 0) {
+			this.length = other.size();
+			this.start = other.start;
+			this.end = other.end;
+		}
+		else {
+			this.length = this.size() + other.size();
+			this.end.setNext(other.start);
+			other.start.setPrev(this.end);
+			this.end = other.end;
+		}
 		other.start = null;
 		other.end = null;
 		other.length = 0;

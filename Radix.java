@@ -27,11 +27,20 @@ public class Radix {
 	    	}
 	    }
 
-	    // int k = 3; //number of digits - 1 (already sorted once)
-	    // for (int i = 0; i < k; i++) {
-	    // 	for (int j = 0; j < list.size(); j++) {
-	    // 		System.out.println(list.getNode(i))
-	    // 	}
+	    int k = 1; //number of digits - 1 (already sorted once)
+	    for (int i = 0; i < k; i++) {
+	    	System.out.println("\nk = "+i);
+	    	//System.out.println(Math.pow(10, i+1));
+	    	for (int j = 0; j < list.size(); j++) {
+	    		System.out.println(list.getNode(j).getData()/((int)(Math.pow(10, i+1))) %10);
+	    		//Integer x = list.removeFront();
+	    		//buckets[x/((int)(Math.pow(10, i+1))) %10 + 10].add(x);
+	    	}
+	    }
+
+	    //print out buckets
+	    // for (int i = 0; i < buckets.length; i++) {
+	    // 	System.out.println(buckets[i]);
 	    // }
 
 	    // for (int i = 0; i < buckets.length; i++) {
@@ -56,7 +65,7 @@ public class Radix {
 	}
 
 	public static void main(String[]args) {
-	    int[] tester = new int[]{4545, 1313, 5757, 2323, 3232, 8686, 9090};
+	    int[] tester = new int[]{45, 13, 57, 23, 32, 86, 90};
 	    radixsort(tester);
 	}
 }

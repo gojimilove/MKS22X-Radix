@@ -50,6 +50,8 @@ public class MyLinkedList<E> {
 
 	public void clear() {
 		length = 0;
+		start = null;
+		end = null;
 	}
 
 	public Node<E> getNode(int index) {

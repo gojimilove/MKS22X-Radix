@@ -52,7 +52,7 @@ public class MyLinkedList<E> {
 		length = 0;
 	}
 
-	private Node<E> getNode(int index) {
+	public Node<E> getNode(int index) {
 		if (index < 0 || index >= length) {
 			throw new IndexOutOfBoundsException();
 		}

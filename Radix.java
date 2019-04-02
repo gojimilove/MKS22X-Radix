@@ -1,10 +1,9 @@
 public class Radix {
-	@SuppressWarnings("unchecked");
+	@SuppressWarnings("unchecked")
 	public static void radixsort(int[]data){
 	  	MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
 	  	for (int i = 0; i < buckets.length; i++) {
 	  		buckets[i] = new MyLinkedList<Integer>();
-	  		System.out.println(buckets[i]);
 	  	}
 	  	//first digit
 	  	for (int i = 0; i < data.length; i++) {
@@ -15,13 +14,15 @@ public class Radix {
 	    	System.out.println(buckets[i]);
 	    }
 	    MyLinkedList<Integer> list = new MyLinkedList();
+	    for (int i = 0; i < buckets.length; i++) {
+	    	System.out.println(buckets[i]);
+	    	System.out.println("LIST: "+list);
+	    	if (buckets[i].size() > 0) {
+	    		list.extend(buckets[i]);
+	    		System.out.println("EXTENDED LIST: "+list);
+	    	}
+	    }
 
-	    // int[] buckets = new int[20];//make 2d array butfor now only one value in each bucket
-	    //int k = 2;//length of longest number in data, 2 for now
-	    // for (int i = 0; i < data.length; i++) {
-	    //   buckets[data[i]%10 + 10] = data[i];
-	    // }
-	    // printArray(buckets);
 	    // int[] buckets2 = new int[20];
 	    // for (int i = 0; i < buckets.length; i++) {
 	    //   if (buckets[i] != 0) {
@@ -46,7 +47,7 @@ public class Radix {
 	}
 
 	public static void main(String[]args) {
-	    int[] tester = new int[]{45, 13, 57, 24, 32, 86, 90};
+	    int[] tester = new int[]{45, 13, 57, 23, 32, 86, 90};
 	    radixsort(tester);
 	}
 }

@@ -1,12 +1,22 @@
 public class Radix {
 	@SuppressWarnings("unchecked")
 	public static void radixsort(int[]data){
+			//print unsorted data
+			// System.out.print("Unsorted data: [");
+			// for (int i = 0; i < data.length; i++) {
+			// 	System.out.print(data[i]);
+			// 	if (i < data.length-1) System.out.print(", ");
+			// }
+			// System.out.println("]");
+
 	  	MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
 	  	for (int i = 0; i < buckets.length; i++) {
 	  		buckets[i] = new MyLinkedList<Integer>();
 	  	}
 
 	  	//first digit
+	  	// if number is negative buckets[9-(first digit of num)] gets num added to it
+	    // else buckets[(first digit of num) + 10] gets num added to it
 	  	for (int i = 0; i < data.length; i++) {
 	  		if (data[i] < 0) {
 	  			buckets[9-(data[i]%10 * (-1))].add(data[i]);
@@ -16,9 +26,9 @@ public class Radix {
 	    }
 
 	    //print out buckets
-	    for (int i = 0; i < buckets.length; i++) {
-	    	System.out.println(buckets[i]);
-	    }
+	    // for (int i = 0; i < buckets.length; i++) {
+	    // 	System.out.println(buckets[i]);
+	    // }
 
 	    MyLinkedList<Integer> list = new MyLinkedList();
 	    //merge buckets into list
@@ -29,7 +39,9 @@ public class Radix {
 	    		list.extend(buckets[i]);	
 	    	}
 	    }
-	    System.out.println("\nLIST: "+list+"\n===========\n\n");
+	    
+	    // System.out.println("\nLIST: "+list+"\n===========\n\n");
+	    
 	    int k = 0;
 	    //find max number of digits
 	    for (int i = 0; i < data.length; i++) {
@@ -38,7 +50,7 @@ public class Radix {
 	    	if (l > k) k = l;
 	    }
 	    k--; //already sorted once
-	    //System.out.println("HI HELLO K EQUALS "+k);
+	    // System.out.println("HI HELLO K EQUALS "+k);
 
 	    for (int i = 0; i < k; i++) {
 	    	//empty list back into buckets
@@ -52,10 +64,10 @@ public class Radix {
 	    	}
 	    	list.clear(); //fix remove later but for now clear works
 
-	    	for (int b = 0; b < buckets.length; b++) {
-		    	System.out.println(buckets[b]);
-		    }
-		    System.out.println("\nLIST: "+list+"\n");
+	    	// for (int b = 0; b < buckets.length; b++) {
+		    // 	System.out.println(buckets[b]);
+		    // }
+		    // System.out.println("\nLIST: "+list+"\n");
 
 	    	//buckets to list
 	    	for (int n = 0; n < buckets.length; n++) {
@@ -64,20 +76,34 @@ public class Radix {
 		    	}
 		    }
 
-		    for (int b = 0; b < buckets.length; b++) {
-		    	System.out.println(buckets[b]);
-		    }
-		    System.out.println("\nLIST: "+list+"\n");
+		    // for (int b = 0; b < buckets.length; b++) {
+		    // 	System.out.println(buckets[b]);
+		    // }
+		    // System.out.println("\nLIST: "+list+"\n");
 	    }
-    
-	    //starting with tens place (if it exists)
-	      //if number is negative buckets[9-(first digit of num)] gets num added to it
-	      //else buckets[(first digit of num) + 10] gets num added to import junit.framework.TestCase;
-	    //move on to next place value, repeat
+
+	    //list back into original array
+	    for (int i = 0; i < list.size(); i++) {
+	    	data[i] = list.getNode(i).getData();
+	    }
+	    
+	    //print data
+	  	// System.out.print("Sorted data: [");
+			// for (int i = 0; i < data.length; i++) {
+			// 	System.out.print(data[i]);
+			// 	if (i < data.length-1) System.out.print(", ");
+			// }
+			// System.out.println("]");
 	}
 
 	public static void main(String[]args) {
 	    int[] tester = new int[]{645345345, 457, 223, 32, 386, 190, 11, 74, 888, 349, -81, -90, -554, -62, -783, -785, -6, -97, -898, -9};
 	    radixsort(tester);
+	    System.out.print("Tester: [");
+			for (int i = 0; i < tester.length; i++) {
+				System.out.print(tester[i]);
+				if (i < tester.length-1) System.out.print(", ");
+			}
+			System.out.println("]");
 	}
 }

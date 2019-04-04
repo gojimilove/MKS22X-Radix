@@ -1,7 +1,7 @@
 public class Radix {
 	@SuppressWarnings("unchecked")
 	public static void radixsort(int[]data){
-			//print unsorted data
+			//PRINT unsorted data
 			// System.out.print("Unsorted data: [");
 			// for (int i = 0; i < data.length; i++) {
 			// 	System.out.print(data[i]);
@@ -25,7 +25,7 @@ public class Radix {
 	      }
 	    }
 
-	    //print out buckets
+	    //PRINT out buckets
 	    // for (int i = 0; i < buckets.length; i++) {
 	    // 	System.out.println(buckets[i]);
 	    // }
@@ -54,7 +54,8 @@ public class Radix {
 
 	    for (int i = 0; i < k; i++) {
 	    	//empty list back into buckets
-	    	for (int j = 0; j < list.size(); j++) {
+	    	int len = list.size();
+	    	for (int j = 0; j < len; j++) {
 	    		Integer x = list.removeFront();
 	    		if (x < 0) {
 	    			buckets[9-(x/((int)(Math.pow(10, i+1))) %10 * (-1))].add(x);
@@ -89,7 +90,7 @@ public class Radix {
 	    }
 	    
 	    //print data
-	  	// System.out.print("Sorted data: [");
+	  // 	System.out.print("Sorted data: [");
 			// for (int i = 0; i < data.length; i++) {
 			// 	System.out.print(data[i]);
 			// 	if (i < data.length-1) System.out.print(", ");
@@ -99,6 +100,7 @@ public class Radix {
 
 	public static void main(String[]args) {
 	    int[] tester = new int[]{645345345, 457, 223, 32, 386, 190, 11, 74, 888, 349, -81, -90, -554, -62, -783, -785, -6, -97, -898, -9};
+	    //int[] tester = new int[]{0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
 	    radixsort(tester);
 	    System.out.print("Tester: [");
 			for (int i = 0; i < tester.length; i++) {

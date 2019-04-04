@@ -1,6 +1,16 @@
 import java.util.*;
 
 public class Driver {
+	// public static void printArray(int[] data) {
+	// 	String s = "[";
+	// 	for (int i = 0; i < data.length; i++) {
+	// 		s+= data[i];
+	// 		if (i < data.length-1) s+= ", ";
+	// 	}
+	// 	s+="]\n\n\n";
+	// 	System.out.println(s);
+	// }
+
 	public static void main(String[]args){
 	  System.out.println("Size\t\tMax Value\tradix/builtin ratio ");
 	  int[]MAX_LIST = {1000000000,500,10};
@@ -25,6 +35,8 @@ public class Driver {
 	        Arrays.sort(data1);
 	        t2 = System.currentTimeMillis();
 	        btime+= t2 - t1;
+	        // printArray(data1);
+	        // printArray(data2);
 	        if(!Arrays.equals(data1,data2)){
 	          System.out.println("FAIL TO SORT!");
 	          System.exit(0);

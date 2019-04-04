@@ -8,7 +8,11 @@ public class Radix {
 
 	  	//first digit
 	  	for (int i = 0; i < data.length; i++) {
-	      buckets[data[i]%10 + 10].add(data[i]);
+	  		if (data[i] < 0) {
+	  			buckets[9-(data[i]%10 * (-1))].add(data[i]);
+	  		} else {
+	      	buckets[data[i]%10 + 10].add(data[i]);
+	      }
 	    }
 
 	    //print out buckets
@@ -27,12 +31,17 @@ public class Radix {
 	    }
 	    System.out.println("\nLIST: "+list+"\n===========\n\n");
 
-	    int k = 3; //number of digits - 1 (already sorted once)
+	    int k = 2; //number of digits - 1 (already sorted once)
 	    for (int i = 0; i < k; i++) {
 	    	//empty list back into buckets
 	    	for (int j = 0; j < list.size(); j++) {
 	    		Integer x = list.getNode(j).getData();
-	    		buckets[x/((int)(Math.pow(10, i+1))) %10 + 10].add(x);
+	    		if (x < 0) {
+	    			buckets[9-(x/((int)(Math.pow(10, i+1))) %10 * (-1))].add(x);
+	    		}else {
+	    			buckets[x/((int)(Math.pow(10, i+1))) %10 + 10].add(x);
+	    		}
+	    		
 	    	}
 	    	list.clear(); //fix remove later but for now clear works
 
@@ -61,7 +70,7 @@ public class Radix {
 	}
 
 	public static void main(String[]args) {
-	    int[] tester = new int[]{645, 13, 457, 223, 32, 386, 190};
+	    int[] tester = new int[]{645, 457, 223, 32, 386, 190, 11, 74, 888, 349, -81, -90, -554, -62, -783, -785, -6, -97, -898, -9};
 	    radixsort(tester);
 	}
 }

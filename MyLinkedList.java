@@ -115,10 +115,8 @@ public class MyLinkedList<E> {
 		if (length <= 0) {
 			throw new IndexOutOfBoundsException("the linked list is empty");
 		}
-		Node<E> n = getNode(0);
-		E x = n.getData();
-		start = getNode(1);
-		getNode(1).setPrev(null);
+		E x = start.getData();
+		start = start.next();
 		length--;
 		return x;
 	}

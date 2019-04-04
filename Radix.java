@@ -55,14 +55,14 @@ public class Radix {
 	    for (int i = 0; i < k; i++) {
 	    	//empty list back into buckets
 	    	for (int j = 0; j < list.size(); j++) {
-	    		Integer x = list.getNode(j).getData();
+	    		Integer x = list.removeFront();
 	    		if (x < 0) {
 	    			buckets[9-(x/((int)(Math.pow(10, i+1))) %10 * (-1))].add(x);
 	    		}else {
 	    			buckets[x/((int)(Math.pow(10, i+1))) %10 + 10].add(x);
 	    		}
 	    	}
-	    	list.clear(); //fix remove later but for now clear works
+	    	// list.clear(); //fix remove later but for now clear works
 
 	    	// for (int b = 0; b < buckets.length; b++) {
 		    // 	System.out.println(buckets[b]);
@@ -83,8 +83,9 @@ public class Radix {
 	    }
 
 	    //list back into original array
-	    for (int i = 0; i < list.size(); i++) {
-	    	data[i] = list.getNode(i).getData();
+	    int len = list.size();
+	    for (int i = 0; i < len; i++) {
+	    	data[i] = list.removeFront();
 	    }
 	    
 	    //print data

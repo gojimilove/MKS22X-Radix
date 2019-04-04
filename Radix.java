@@ -30,8 +30,16 @@ public class Radix {
 	    	}
 	    }
 	    System.out.println("\nLIST: "+list+"\n===========\n\n");
+	    int k = 0;
+	    //find max number of digits
+	    for (int i = 0; i < data.length; i++) {
+	    	int l = Integer.toString(data[i]).length();
+	    	if (data[i] < 0) l--;
+	    	if (l > k) k = l;
+	    }
+	    k--; //already sorted once
+	    //System.out.println("HI HELLO K EQUALS "+k);
 
-	    int k = 2; //number of digits - 1 (already sorted once)
 	    for (int i = 0; i < k; i++) {
 	    	//empty list back into buckets
 	    	for (int j = 0; j < list.size(); j++) {
@@ -41,7 +49,6 @@ public class Radix {
 	    		}else {
 	    			buckets[x/((int)(Math.pow(10, i+1))) %10 + 10].add(x);
 	    		}
-	    		
 	    	}
 	    	list.clear(); //fix remove later but for now clear works
 
@@ -70,7 +77,7 @@ public class Radix {
 	}
 
 	public static void main(String[]args) {
-	    int[] tester = new int[]{645, 457, 223, 32, 386, 190, 11, 74, 888, 349, -81, -90, -554, -62, -783, -785, -6, -97, -898, -9};
+	    int[] tester = new int[]{645345345, 457, 223, 32, 386, 190, 11, 74, 888, 349, -81, -90, -554, -62, -783, -785, -6, -97, -898, -9};
 	    radixsort(tester);
 	}
 }
